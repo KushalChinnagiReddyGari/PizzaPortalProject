@@ -1,0 +1,71 @@
+﻿@model IEnumerable<PizzaPortalProject.Models.PizzaModel>
+
+@{
+    ViewBag.Title = "Pizza World!!🍕";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:left; margin-bottom: 30px;">Pizza World!!🍕</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header" style="color:crimson">
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </div>
+                    <div class="card-body">
+                        <p class="price" style="color:deepskyblue">Price: $@Html.DisplayFor(modelItem => item.Price)</p>
+                        <p>
+                            <a href="@Url.Action("SelectedItems", new { id = item.Id })" class="btn btn-primary">Select</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .card {
+        margin-bottom: 30px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color:antiquewhite;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+    .card-header {
+        background-color:bisque;
+        font-weight: bold;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .price {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        background-color: #ff6347;
+        border-color: #ff6347;
+    }
+
+        .btn-primary:hover {
+            background-color: #ff4c32;
+            border-color: #ff4c32;
+        }
+</style>
